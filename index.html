@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>North Road Trip 2026 | แผนการเดินทาง 22-25 ต.ค. 69</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts Prompt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Prompt', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              orange: '#FF5722',
+              dark: '#0F172A',
+              card: '#1E293B',
+              accent: '#38BDF8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      -webkit-tap-highlight-color: transparent;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scroll {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen pb-12 antialiased selection:bg-orange-500 selection:text-white">
+
+  <!-- Main Container Mobile First -->
+  <main class="max-w-md mx-auto min-h-screen bg-slate-900 border-x border-slate-800 shadow-2xl relative flex flex-col">
+
+    <!-- Hero Header / Poster Banner -->
+    <header class="relative h-72 w-full overflow-hidden shrink-0">
+      <img 
+        src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1000&q=80" 
+        alt="Northern Thailand Mountain" 
+        class="w-full h-full object-cover brightness-75 scale-105 transition-transform duration-700 hover:scale-100"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-black/60"></div>
+      
+      <!-- Top Bar Badges -->
+      <div class="absolute top-4 left-4 right-4 flex justify-between items-center">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-600/90 text-white backdrop-blur-md shadow-lg border border-orange-400/30">
+          <i data-lucide="compass" class="w-3.5 h-3.5"></i> ROAD TRIP 2026
+        </span>
+        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-black/50 text-slate-200 backdrop-blur-md border border-white/10">
+          <i data-lucide="calendar" class="w-3.5 h-3.5 text-orange-400"></i> 4 วัน 3 คืน
+        </span>
+      </div>
+
+      <!-- Title & Destination -->
+      <div class="absolute bottom-4 left-4 right-4">
+        <p class="text-orange-400 text-xs font-semibold uppercase tracking-widest mb-1 flex items-center gap-1">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> นครสวรรค์ • เชียงราย • เชียงใหม่ • ลำปาง
+        </p>
+        <h1 class="text-2xl font-bold text-white tracking-tight drop-shadow-md">
+          เส้นทางแอ่วเหนือ ลมหนาว 2569
+        </h1>
+        <p class="text-xs text-slate-300 mt-0.5">22 - 25 ตุลาคม 2569 | ขี่สนุก ปลอดภัยตลอดทริป</p>
+      </div>
+    </header>
+
+    <!-- Quick Stats Bar -->
+    <section class="grid grid-cols-3 gap-2 px-4 py-3 bg-slate-800/80 border-y border-slate-700/60 backdrop-blur text-center text-xs">
+      <div>
+        <div class="text-slate-400">ระยะทางรวม</div>
+        <div class="text-sm font-bold text-orange-400">~1,250 กม.</div>
+      </div>
+      <div class="border-x border-slate-700">
+        <div class="text-slate-400">จุดรวมพลแรก</div>
+        <div class="text-sm font-bold text-white">05:00 น.</div>
+      </div>
+      <div>
+        <div class="text-slate-400">จุดหมายสูงสุด</div>
+        <div class="text-sm font-bold text-emerald-400">ดอยแม่สลอง</div>
+      </div>
+    </section>
+
+    <!-- Sticky Date Selector -->
+    <nav class="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-md px-3 py-2.5 border-b border-slate-800 shadow-md">
+      <div class="flex gap-2 overflow-x-auto custom-scroll" id="dayTabs">
+        <button onclick="switchDay(1)" id="tab-1" class="day-tab active shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-orange-600 text-white shadow-md flex items-center gap-1.5">
+          <i data-lucide="sun" class="w-3.5 h-3.5"></i> พฤ. 22 ต.ค.
+        </button>
+        <button onclick="switchDay(2)" id="tab-2" class="day-tab shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center gap-1.5">
+          <i data-lucide="mountain" class="w-3.5 h-3.5"></i> ศ. 23 ต.ค.
+        </button>
+        <button onclick="switchDay(3)" id="tab-3" class="day-tab shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center gap-1.5">
+          <i data-lucide="coffee" class="w-3.5 h-3.5"></i> ส. 24 ต.ค.
+        </button>
+        <button onclick="switchDay(4)" id="tab-4" class="day-tab shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center gap-1.5">
+          <i data-lucide="flag" class="w-3.5 h-3.5"></i> อา. 25 ต.ค.
+        </button>
+      </div>
+    </nav>
+
+    <!-- Content Sections -->
+    <div class="px-4 py-4 space-y-6 flex-1">
+
+      <!-- ================= DAY 1 ================= -->
+      <section id="day-1" class="day-content space-y-4">
+        
+        <!-- Day Banner Info -->
+        <div class="bg-gradient-to-r from-orange-950/60 to-slate-800/80 border border-orange-500/30 rounded-2xl p-4 shadow-lg">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-orange-400 text-xs font-semibold tracking-wider uppercase">DAY 1 ITINERARY</span>
+              <h2 class="text-base font-bold text-white mt-0.5">นครสวรรค์ ➔ พะเยา ➔ แม่สลอง</h2>
+            </div>
+            <span class="text-xs px-2.5 py-1 rounded-lg bg-orange-500/20 text-orange-300 font-mono">22 ต.ค. 69</span>
+          </div>
+
+          <!-- Quick Navigation Link Buttons -->
+          <div class="mt-3.5 pt-3 border-t border-slate-700/60 flex flex-col gap-2">
+            <a href="https://maps.app.goo.gl/jhSMM7HhRitMBmej7" target="_blank" class="w-full inline-flex items-center justify-between px-3 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-medium text-xs shadow-md transition-all active:scale-[0.98]">
+              <span class="flex items-center gap-2">
+                <i data-lucide="navigation" class="w-4 h-4"></i> นำทางช่วงเช้า (บางจาก ➔ ปตท.ค่ายสุรศักดิ์)
+              </span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 opacity-80"></i>
+            </a>
+            <a href="https://maps.app.goo.gl/iwPTMejDtNZVEsXf6" target="_blank" class="w-full inline-flex items-center justify-between px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-medium text-xs border border-slate-700 shadow-md transition-all active:scale-[0.98]">
+              <span class="flex items-center gap-2 text-sky-400">
+                <i data-lucide="navigation" class="w-4 h-4"></i> นำทางช่วงบ่าย (ค่ายสุรศักดิ์ ➔ แม่สลอง)
+              </span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 opacity-80"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Timeline Items Day 1 -->
+        <div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-700">
+
+          <!-- 05:00 Point -->
+          <div class="relative group">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-orange-500 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3 shadow-md">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-orange-400 font-mono">05:00 น.</span>
+                <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-semibold">จุดรวมพล</span>
+              </div>
+              <p class="font-semibold text-white mt-1 text-sm">ปั๊มบางจาก หน้า ม.เจ้าพระยา (นครสวรรค์)</p>
+              <p class="text-xs text-slate-400 mt-1">ถึงก่อนเติมน้ำมันเต็มถัง ตรวจเช็กสัมภาระ เตรียมตัวล้อหมุน 05:30 น.</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=ปั๊มบางจาก+หน้า+มหาวิทยาลัยเจ้าพระยา+นครสวรรค์" target="_blank" class="mt-2.5 inline-flex items-center gap-1.5 text-xs text-sky-400 hover:underline">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> แผนที่จุดนัดพบ
+              </a>
+            </div>
+          </div>
+
+          <!-- 07:30 - 08:00 เถียงนา คาเฟ่ ตาก -->
+          <div class="relative group">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-sky-400 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl overflow-hidden shadow-md">
+              <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80" alt="Tieng Na Cafe Tak" class="w-full h-32 object-cover" />
+              <div class="p-3">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="font-bold text-orange-400 font-mono">07:30 - 08:00 น.</span>
+                  <span class="text-slate-400 text-[10px]">175 กม. จากจุดเริ่ม</span>
+                </div>
+                <p class="font-semibold text-white mt-1 text-sm">ปตท.ตาก-พหลโยธิน & เถียงนา คาเฟ่</p>
+                <p class="text-xs text-slate-300 mt-1">เติมน้ำมัน ปตท. แล้วแวะทานอาหารเช้า ขนมเบเกอรี่ครัวซองต์ และกาแฟชั้นเลิศที่ เถียงนา คอฟฟี่ แอนด์ เบเกอรี่</p>
+                <div class="flex gap-2 mt-2.5">
+                  <a href="https://maps.app.goo.gl/jhSMM7HhRitMBmej7" target="_blank" class="flex-1 py-1.5 px-2 rounded-lg bg-slate-700 text-center text-xs text-sky-300 flex items-center justify-center gap-1">
+                    <i data-lucide="navigation" class="w-3 h-3"></i> Route แผนที่ช่วงเช้า
+                  </a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Tieng+Na+Coffee+and+Bakery+Farm+ตาก" target="_blank" class="py-1.5 px-3 rounded-lg bg-orange-600/90 text-white text-xs flex items-center justify-center gap-1">
+                    <i data-lucide="map-pin" class="w-3 h-3"></i> เถียงนา
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 11:00 ปตท.ค่ายสุรศักดิ์ ลำปาง -->
+          <div class="relative group">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-slate-500 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3 shadow-md">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-orange-400 font-mono">11:00 - 11:30 น.</span>
+                <span class="text-slate-400 text-[10px]">190 กม. (ตาก-เถิน-ลำปาง)</span>
+              </div>
+              <p class="font-semibold text-white mt-1 text-sm">จุดพัก ปตท.ค่ายสุรศักดิ์มนตรี ลำปาง</p>
+              <p class="text-xs text-slate-400 mt-1">พักยืดเส้นสาย เติมน้ำมันให้เรียบร้อย ก่อนออกเดินทางสู่พะเยา (130 กม.)</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=ปตท.ค่ายสุรศักดิ์มนตรี+ลำปาง" target="_blank" class="mt-2 inline-flex items-center gap-1.5 text-xs text-sky-400 hover:underline">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> เปิดพิกัด ปตท.ค่ายสุรศักดิ์
+              </a>
+            </div>
+          </div>
+
+          <!-- 12:30 อันเจริญ พะเยา -->
+          <div class="relative group">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-amber-400 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3 shadow-md">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-orange-400 font-mono">12:30 - 13:30 น.</span>
+                <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 text-[10px] font-semibold">มื้อกลางวัน</span>
+              </div>
+              <p class="font-semibold text-white mt-1 text-sm">ร้านอันเจริญ พะเยา</p>
+              <p class="text-xs text-slate-300 mt-1">แวะรับประทานอาหารกลางวันเจ้าดังแห่งเมืองพะเยา อิ่มแล้วเตรียมลุยต่อสู่เชียงราย</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=ร้านอันเจริญ+พะเยา" target="_blank" class="mt-2 inline-flex items-center gap-1.5 text-xs text-sky-400 hover:underline">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> หมุดร้านอันเจริญ
+              </a>
+            </div>
+          </div>
+
+          <!-- 15:00 วัดร่องขุ่น -->
+          <div class="relative group">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-white ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl overflow-hidden shadow-md">
+              <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=700&q=80" alt="Wat Rong Khun Chiang Rai" class="w-full h-32 object-cover" />
+              <div class="p-3">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="font-bold text-orange-400 font-mono">15:00 น.</span>
+                  <span class="text-slate-400 text-[10px]">แวะพัก & ถ่ายรูป</span>
+                </div>
+                <p class="font-semibold text-white mt-1 text-sm">วัดร่องขุ่น (White Temple) เชียงราย</p>
+                <p class="text-xs text-slate-300 mt-1">(แวะเติมน้ำมัน PTT พาน 50 กม. ก่อนถึง) ชมสถาปัตยกรรมสีขาววิจิตรอลังการ พักรถและผ่อนคลาย</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=วัดร่องขุ่น+เชียงราย" target="_blank" class="mt-2.5 inline-flex items-center gap-1.5 text-xs text-sky-400 hover:underline">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> นำทางไปวัดร่องขุ่น
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 16:00 - 17:30 สู่ดอยแม่สลอง -->
+          <div class="relative group">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-emerald-400 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl overflow-hidden shadow-md">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80" alt="Doi Mae Salong" class="w-full h-32 object-cover" />
+              <div class="p-3">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="font-bold text-orange-400 font-mono">16:00 - 17:30 น.</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-semibold">Check-in</span>
+                </div>
+                <p class="font-semibold text-white mt-1 text-sm">เติมน้ำมันบางจากแม่จัน ➔ พิชิตดอยแม่สลอง</p>
+                <p class="text-xs text-slate-300 mt-1">16:00 น. เติมน้ำมันเต็มถังที่ปั๊มบางจาก แม่จัน ก่อนไต่เขาโค้งสวย 35 กม. เข้าเช็กอินที่พักดอยแม่สลอง และทานมื้อค่ำร่วมกัน 18:00 น.</p>
+                <a href="https://maps.app.goo.gl/iwPTMejDtNZVEsXf6" target="_blank" class="mt-2.5 inline-flex items-center gap-1.5 text-xs text-orange-400 font-semibold hover:underline">
+                  <i data-lucide="navigation" class="w-3.5 h-3.5"></i> เปิด Map นำทางขึ้นดอยแม่สลอง
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= DAY 2 ================= -->
+      <section id="day-2" class="day-content hidden space-y-4">
+        
+        <!-- Day Banner Info -->
+        <div class="bg-gradient-to-r from-sky-950/60 to-slate-800/80 border border-sky-500/30 rounded-2xl p-4 shadow-lg">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-sky-400 text-xs font-semibold tracking-wider uppercase">DAY 2 ITINERARY</span>
+              <h2 class="text-base font-bold text-white mt-0.5">ดอยแม่สลอง ➔ ฝาง ➔ เชียงดาว ➔ เชียงใหม่</h2>
+            </div>
+            <span class="text-xs px-2.5 py-1 rounded-lg bg-sky-500/20 text-sky-300 font-mono">23 ต.ค. 69</span>
+          </div>
+
+          <div class="mt-3.5 pt-3 border-t border-slate-700/60 flex flex-col gap-2">
+            <a href="https://maps.app.goo.gl/MQafPywGbW3QLdzf8" target="_blank" class="w-full inline-flex items-center justify-between px-3 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-medium text-xs shadow-md transition-all active:scale-[0.98]">
+              <span class="flex items-center gap-2">
+                <i data-lucide="navigation" class="w-4 h-4"></i> แผนที่ช่วงเช้า (แม่สลอง ➔ ท่าตอน ➔ เมืองฝาง)
+              </span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 opacity-80"></i>
+            </a>
+            <a href="https://maps.app.goo.gl/fLiJPNB1yT5wJ5H6A" target="_blank" class="w-full inline-flex items-center justify-between px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-medium text-xs border border-slate-700 shadow-md transition-all active:scale-[0.98]">
+              <span class="flex items-center gap-2 text-orange-400">
+                <i data-lucide="navigation" class="w-4 h-4"></i> แผนที่ช่วงบ่าย (ฝาง ➔ เชียงดาว ➔ เชียงใหม่)
+              </span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 opacity-80"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-700">
+
+          <!-- 07:00 แม่สลองตอนเช้า -->
+          <div class="relative">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-emerald-400 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3 shadow-md">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-orange-400 font-mono">07:00 - 09:30 น.</span>
+                <span class="text-slate-400 text-[10px]">Morning Vibe</span>
+              </div>
+              <p class="font-semibold text-white mt-1 text-sm">วนรอบแม่สลอง • พระบรมธาตุฯ • ตลาดเช้า</p>
+              <p class="text-xs text-slate-300 mt-1">สัมผัสอากาศเย็น ชิมชาอู่หลง เที่ยวชมตลาดเช้าชนเผ่า และขึ้นสักการะพระบรมธาตุเจดีย์ศรีนครินทราสถิตมหาสันติคีรี ก่อนกลับมาเช็กเอาท์ 09:30 น.</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=พระบรมธาตุเจดีย์ศรีนครินทราสถิตมหาสันติคีรี+ดอยแม่สลอง" target="_blank" class="mt-2 inline-flex items-center gap-1.5 text-xs text-sky-400 hover:underline">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> พระบรมธาตุฯ แม่สลอง
+              </a>
+            </div>
+          </div>
+
+          <!-- 12:00 เมืองฝาง -->
+          <div class="relative">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-amber-400 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3 shadow-md">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-orange-400 font-mono">10:00 - 12:00 น.</span>
+                <span class="text-slate-400 text-[10px]">80 กม. (แม่สลอง-ท่าตอน-ฝาง)</span>
+              </div>
+              <p class="font-semibold text-white mt-1 text-sm">กลางวันเมืองฝาง + เติมน้ำมัน</p>
+              <p class="text-xs text-slate-300 mt-1">เส้นทางเลียบแม่น้ำกกและเทือกเขา เข้าเมืองฝาง แวะรับประทานอาหารกลางวันและเติมน้ำมันเต็มถัง</p>
+              <a href="https://maps.app.goo.gl/MQafPywGbW3QLdzf8" target="_blank" class="mt-2 inline-flex items-center gap-1.5 text-xs text-sky-400 hover:underline">
+                <i data-lucide="navigation" class="w-3.5 h-3.5"></i> ลิงก์นำทางเส้นทางฝาง
+              </a>
+            </div>
+          </div>
+
+          <!-- 14:30 เชียงดาว ถนนต้นไม้ -->
+          <div class="relative">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-emerald-500 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl overflow-hidden shadow-md">
+              <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=700&q=80" alt="Chiang Dao Road" class="w-full h-32 object-cover" />
+              <div class="p-3">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="font-bold text-orange-400 font-mono">14:30 - 15:30 น.</span>
+                  <span class="text-slate-400 text-[10px]">Photo Spot & Coffee</span>
+                </div>
+                <p class="font-semibold text-white mt-1 text-sm">ถนนต้นไม้ เชียงดาว & จิบกาแฟชิลๆ</p>
+                <p class="text-xs text-slate-300 mt-1">จุดถ่ายรูปอุโมงค์ต้นไม้ไฮไลต์ของเชียงดาว มองเห็นดอยหลวงเชียงดาว แวะจิบกาแฟชมวิว ก่อนเดินทางต่อเข้าเชียงใหม่</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=ถนนต้นไม้+เชียงดาว" target="_blank" class="mt-2.5 inline-flex items-center gap-1.5 text-xs text-sky-400 hover:underline">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> พิกัดถนนต้นไม้ เชียงดาว
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 18:00 บุฟเฟ่ต์เยอรมัน Auf der Au Garden -->
+          <div class="relative">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-orange-500 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3 shadow-md">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-orange-400 font-mono">18:00 - 20:00 น.</span>
+                <span class="px-2 py-0.5 rounded bg-orange-500/20 text-orange-400 text-[10px] font-semibold">Dinner Party</span>
+              </div>
+              <p class="font-semibold text-white mt-1 text-sm">Auf der Au Garden เชียงใหม่</p>
+              <p class="text-xs text-slate-300 mt-1">17:00 น. เช็คอินโรงแรม พักผ่อนล้างหน้า แล้วล้อหมุนมาจัดหนักบุฟเฟ่ต์เยอรมันต้นตำรับ ทั้งขาหมู ไส้กรอก และเบเกอรี่</p>
+              <div class="mt-2.5 flex items-center justify-between">
+                <a href="https://www.google.com/maps/search/?api=1&query=Auf+der+Au+Garden+Chiang+Mai" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-orange-400 hover:underline">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> หมุดร้าน Auf der Au
+                </a>
+                <span class="text-xs text-slate-400">ต่อด้วยเดินเล่นย่านนิมมานฯ</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= DAY 3 ================= -->
+      <section id="day-3" class="day-content hidden space-y-4">
+        
+        <!-- Day Banner Info -->
+        <div class="bg-gradient-to-r from-emerald-950/60 to-slate-800/80 border border-emerald-500/30 rounded-2xl p-4 shadow-lg">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-emerald-400 text-xs font-semibold tracking-wider uppercase">DAY 3 ITINERARY</span>
+              <h2 class="text-base font-bold text-white mt-0.5">เชียงใหม่ ➔ ลำพูน ➔ ขุนตาล ➔ ลำปาง</h2>
+            </div>
+            <span class="text-xs px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 font-mono">24 ต.ค. 69</span>
+          </div>
+
+          <div class="mt-3.5 pt-3 border-t border-slate-700/60">
+            <a href="https://maps.app.goo.gl/9X5eXnTVnR9vbeeb6" target="_blank" class="w-full inline-flex items-center justify-between px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs shadow-md transition-all active:scale-[0.98]">
+              <span class="flex items-center gap-2">
+                <i data-lucide="navigation" class="w-4 h-4"></i> แผนที่นำทางวันที่ 24 (เชียงใหม่ ➔ ลำพูน ➔ ลำปาง)
+              </span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 opacity-80"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-700">
+
+          <!-- 06:00 ตีนดอยสุเทพ & ดอยปุย -->
+          <div class="relative">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-yellow-400 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3 shadow-md">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-orange-400 font-mono">06:00 - 09:30 น.</span>
+                <span class="text-slate-400 text-[10px]">Morning Activity</span>
+              </div>
+              <p class="font-semibold text-white mt-1 text-sm">ใส่บาตรตีนดอยสุเทพ & กาแฟดอยปุย</p>
+              <p class="text-xs text-slate-300 mt-1">ใครตื่นเช้า ขี่รับลมขึ้นจิบกาแฟชมวิวดอยปุย หรือเลือกทานอาหารเช้าสบายๆ ที่โรงแรม 07:00-09:00 น. ก่อนเช็คเอาท์ 09:30 น.</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=ลานอนุสาวรีย์ครูบาศรีวิชัย+เชียงใหม่" target="_blank" class="mt-2 inline-flex items-center gap-1.5 text-xs text-sky-400 hover:underline">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> จุดใส่บาตรครูบาศรีวิชัย
+              </a>
+            </div>
+          </div>
+
+          <!-- 10:30 วัดพระธาตุหริภุญชัย ลำพูน -->
+          <div class="relative">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-amber-400 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3 shadow-md">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-orange-400 font-mono">10:30 น.</span>
+                <span class="text-slate-400 text-[10px]">ลำพูน</span>
+              </div>
+              <p class="font-semibold text-white mt-1 text-sm">วัดพระธาตุหริภุญชัย วรมหาวิหาร</p>
+              <p class="text-xs text-slate-300 mt-1">นมัสการพระบรมธาตุศักดิ์สิทธิ์คู่บ้านคู่เมืองลำพูน เสริมสิริมงคลแก่คณะเดินทาง</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=วัดพระธาตุหริภุญชัยวรมหาวิหาร+ลำพูน" target="_blank" class="mt-2 inline-flex items-center gap-1.5 text-xs text-sky-400 hover:underline">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> หมุดวัดพระธาตุหริภุญชัย
+              </a>
+            </div>
+          </div>
+
+          <!-- 12:00 สะพานขาวทาชมภู แม่ทา -->
+          <div class="relative">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-white ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl overflow-hidden shadow-md">
+              <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=700&q=80" alt="White Bridge Tha Chomphu" class="w-full h-32 object-cover" />
+              <div class="p-3">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="font-bold text-orange-400 font-mono">12:00 น.</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-semibold">กลางวัน & ถ่ายรูป</span>
+                </div>
+                <p class="font-semibold text-white mt-1 text-sm">สะพานขาวทาชมภู (แม่ทา)</p>
+                <p class="text-xs text-slate-300 mt-1">สะพานประวัติศาสตร์รถไฟสีขาวสุดคลาสสิก แวะทานอาหารกลางวันพื้นถิ่น เดินย่อย และถ่ายรูปเท่ๆ กับขบวนรถไฟและสะพานโค้ง</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=สะพานขาวทาชมภู+ลำพูน" target="_blank" class="mt-2.5 inline-flex items-center gap-1.5 text-xs text-sky-400 hover:underline">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> พิกัดสะพานขาวทาชมภู
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 14:00 ขุนตาลฮิลล์ & กาดกองต้า ลำปาง -->
+          <div class="relative">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-purple-400 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3 shadow-md">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-orange-400 font-mono">14:00 - 17:30 น.</span>
+                <span class="text-slate-400 text-[10px]">ลำปางหนา</span>
+              </div>
+              <p class="font-semibold text-white mt-1 text-sm">กาแฟขุนตาลฮิลล์ ➔ เช็คอินลำปาง ➔ ถนนคนเดินกาดกองต้า</p>
+              <p class="text-xs text-slate-300 mt-1">14:00 จิบกาแฟยามบ่ายที่ ขุนตาลฮิลล์ ➔ 16:00 เช็คอินโรงแรมในลำปาง ➔ 17:30 รวมพลไปเดินเที่ยวกาดกองต้า ชิมสตรีทฟู้ดและของอร่อยเมืองลำปาง</p>
+              <div class="flex gap-2 mt-2.5">
+                <a href="https://www.google.com/maps/search/?api=1&query=Khuntan+Hill+Coffee" target="_blank" class="text-xs text-sky-400 hover:underline flex items-center gap-1">
+                  <i data-lucide="coffee" class="w-3 h-3"></i> ขุนตาลฮิลล์
+                </a>
+                <span class="text-slate-600">|</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=ตลาดกาดกองต้า+ลำปาง" target="_blank" class="text-xs text-amber-400 hover:underline flex items-center gap-1">
+                  <i data-lucide="shopping-bag" class="w-3 h-3"></i> กาดกองต้า
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= DAY 4 ================= -->
+      <section id="day-4" class="day-content hidden space-y-4">
+        
+        <!-- Day Banner Info -->
+        <div class="bg-gradient-to-r from-purple-950/60 to-slate-800/80 border border-purple-500/30 rounded-2xl p-4 shadow-lg">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-purple-400 text-xs font-semibold tracking-wider uppercase">DAY 4 ITINERARY</span>
+              <h2 class="text-base font-bold text-white mt-0.5">ลำปาง ➔ ดอยพระฌาน ➔ ตาก ➔ นครสวรรค์</h2>
+            </div>
+            <span class="text-xs px-2.5 py-1 rounded-lg bg-purple-500/20 text-purple-300 font-mono">25 ต.ค. 69</span>
+          </div>
+
+          <div class="mt-3.5 pt-3 border-t border-slate-700/60">
+            <a href="https://maps.app.goo.gl/Vs3FnFJYsGiAtugh7" target="_blank" class="w-full inline-flex items-center justify-between px-3 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-medium text-xs shadow-md transition-all active:scale-[0.98]">
+              <span class="flex items-center gap-2">
+                <i data-lucide="navigation" class="w-4 h-4"></i> แผนที่นำทางวันที่ 25 (ดอยพระฌาน ➔ นครสวรรค์)
+              </span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 opacity-80"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-700">
+
+          <!-- 09:00 พระพุทธรูปไดบุตสึ วัดพระธาตุดอยพระฌาน -->
+          <div class="relative">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-purple-400 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl overflow-hidden shadow-md">
+              <img src="https://images.unsplash.com/photo-1563911302283-d2bc129e7570?auto=format&fit=crop&w=700&q=80" alt="Wat Phra That Doi Phra Chan" class="w-full h-32 object-cover" />
+              <div class="p-3">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="font-bold text-orange-400 font-mono">09:00 - 10:30 น.</span>
+                  <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[10px] font-semibold">Highlight</span>
+                </div>
+                <p class="font-semibold text-white mt-1 text-sm">วัดพระธาตุดอยพระฌาน (แม่ทะ ลำปาง)</p>
+                <p class="text-xs text-slate-300 mt-1">ขึ้นรถสองแถวสู่ยอดดอย สักการะพระใหญ่ไดบุตสึสไตล์ญี่ปุ่น ชมทะเลหมอกและทัศนียภาพ 360 องศา แวะจิบกาแฟก่อนออกเดินทาง 10:30 น.</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=วัดพระธาตุดอยพระฌาน+แม่ทะ+ลำปาง" target="_blank" class="mt-2.5 inline-flex items-center gap-1.5 text-xs text-sky-400 hover:underline">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> พิกัดวัดพระธาตุดอยพระฌาน
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 12:30 มื้อกลางวัน ตาก -->
+          <div class="relative">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-slate-500 ring-4 ring-slate-900"></div>
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-xl p-3 shadow-md">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-orange-400 font-mono">12:30 น.</span>
+                <span class="text-slate-400 text-[10px]">เติมน้ำมัน & กลางวัน</span>
+              </div>
+              <p class="font-semibold text-white mt-1 text-sm">แวะเมืองตาก</p>
+              <p class="text-xs text-slate-300 mt-1">เดินทางผ่านเถิน สู่เมืองตาก เติมน้ำมันให้พร้อม และแวะทานมื้อกลางวันแบบง่ายๆ รวดเร็ว สบายกระเป๋า</p>
+            </div>
+          </div>
+
+          <!-- 16:00 ปิดทริป นครสวรรค์ -->
+          <div class="relative">
+            <div class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-emerald-400 ring-4 ring-slate-900"></div>
+            <div class="bg-gradient-to-r from-emerald-950/40 to-slate-800 border border-emerald-500/30 rounded-xl p-4 shadow-md text-center">
+              <i data-lucide="check-circle" class="w-8 h-8 text-emerald-400 mx-auto mb-1.5"></i>
+              <div class="font-bold text-white text-base">16:00 น. ถึงนครสวรรค์</div>
+              <p class="text-xs text-slate-300 mt-1">เดินทาง ตาก ➔ กำแพงเพชร ➔ นครสวรรค์ ถึงบ้านโดยสวัสดิภาพและเต็มไปด้วยความประทับใจ!</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Floating SOS & Emergency / Quick Contact Bar -->
+    <footer class="mt-auto p-4 border-t border-slate-800 bg-slate-950/90 backdrop-blur">
+      <div class="flex items-center justify-between text-xs text-slate-400">
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i> ขอให้ขับขี่ปลอดภัยทุกท่าน
+        </span>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:text-white flex items-center gap-1 text-[11px]">
+          <i data-lucide="arrow-up" class="w-3 h-3"></i> ขึ้นบนสุด
+        </button>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Interactive Script -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Tab Switching Logic
+    function switchDay(dayNumber) {
+      // Hide all contents
+      document.querySelectorAll('.day-content').forEach(el => {
+        el.classList.add('hidden');
+      });
+
+      // Reset Tab Styles
+      document.querySelectorAll('.day-tab').forEach(tab => {
+        tab.classList.remove('bg-orange-600', 'text-white', 'shadow-md');
+        tab.classList.add('bg-slate-800', 'text-slate-300');
+      });
+
+      // Show selected content
+      const selectedContent = document.getElementById(`day-${dayNumber}`);
+      if (selectedContent) {
+        selectedContent.classList.remove('hidden');
+      }
+
+      // Highlight active tab
+      const activeTab = document.getElementById(`tab-${dayNumber}`);
+      if (activeTab) {
+        activeTab.classList.remove('bg-slate-800', 'text-slate-300');
+        activeTab.classList.add('bg-orange-600', 'text-white', 'shadow-md');
+      }
+    }
+  </script>
+</body>
+</html>
